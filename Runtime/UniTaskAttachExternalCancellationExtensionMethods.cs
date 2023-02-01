@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Kogane
@@ -11,6 +12,8 @@ namespace Kogane
             GameObject   gameObject
         )
         {
+            if ( gameObject == null ) throw new OperationCanceledException();
+
             return self.AttachExternalCancellation( gameObject.GetCancellationTokenOnDestroy() );
         }
 
@@ -20,6 +23,8 @@ namespace Kogane
             GameObject      gameObject
         )
         {
+            if ( gameObject == null ) throw new OperationCanceledException();
+
             return self.AttachExternalCancellation( gameObject.GetCancellationTokenOnDestroy() );
         }
 
@@ -29,6 +34,8 @@ namespace Kogane
             TComponent   component
         ) where TComponent : Component
         {
+            if ( component == null ) throw new OperationCanceledException();
+
             return self.AttachExternalCancellation( component.GetCancellationTokenOnDestroy() );
         }
 
@@ -38,6 +45,8 @@ namespace Kogane
             TComponent      component
         ) where TComponent : Component
         {
+            if ( component == null ) throw new OperationCanceledException();
+
             return self.AttachExternalCancellation( component.GetCancellationTokenOnDestroy() );
         }
     }
